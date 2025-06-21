@@ -1,53 +1,80 @@
-# 📈 Stock Price Prediction with Linear Regression
+# Stock Price Prediction Using Linear Regression on Time Series Data
 
-This project demonstrates a simple stock price prediction pipeline using historical data and a windowed Linear Regression model.
+This project demonstrates a simple approach to predict stock prices using historical closing prices and a linear regression model trained on sliding window time-series data.
 
-## 📌 Project Summary
+---
 
-- Ticker: `PLAY` (Dave & Buster's Entertainment)
-- Source: Yahoo Finance via `yfinance`
-- Approach: Sliding window time-series regression
-- Model: `sklearn.linear_model.LinearRegression`
-- Metrics: MSE, RMSE, MAE
+## 📈 Objective
 
-## 📂 Structure
+Predict the next day’s closing price of a stock based on the past `window_size` days of closing prices.
 
-.
-├── stock_price_prediction.py
-├── models/
-│ └── play_stock_model.pkl
-├── requirements.txt
-└── README.md
+---
+
+## ⚙️ Features
+
+- Download historical stock prices using `yfinance`
+- Create windowed input-output pairs for time series regression
+- Train/test split without shuffling (to preserve temporal order)
+- Linear regression model training and evaluation
+- Visualization of price history and predicted vs true prices
+- Save trained model and plots to disk
+
+---
+
+## 📂 Project Structure
+
+```
+
+stock-price-prediction/
+├── main.py             # Main script for data download, training, evaluation, and plotting
+├── models/             # Saved trained model(s)
+├── plots/              # Visualizations (price history, prediction vs true)
+├── requirements.txt    # Python dependencies
+└── README.md           # This file
+
+````
+
+---
+
+## 🛠️ Requirements
+
+Install dependencies via pip:
+
+```bash
+pip install yfinance pandas numpy matplotlib seaborn scikit-learn joblib
+````
+
+---
 
 ## ▶️ How to Run
 
-1. Install dependencies:
+Simply run:
 
 ```bash
-pip install -r requirements.txt
-
+python main.py
 ```
-2. Run the script:
 
-```bash
-python stock_price_prediction.py
-```
-The trained model will be saved in the models/ directory.
+---
 
-📊 Example Output
-MSE: 123.4567
+## 📊 Outputs
 
-RMSE: 11.1111
+* `plots/price_history.png` — Historical closing prices chart
+* `plots/prediction_vs_true.png` — Plot comparing predicted and true prices on test set
+* `models/play_stock_model.pkl` — Saved trained linear regression model
 
-MAE: 8.8888
+---
 
-🧠 Possible Improvements
-Use LSTM or more advanced models
+## 📉 Evaluation Metrics
 
-Try different tickers or forecast horizons
+* Mean Squared Error (MSE)
+* Root Mean Squared Error (RMSE)
+* Mean Absolute Error (MAE)
 
-Add train/val/test split and grid search
+---
 
+## License
 
+MIT License
 
+---
 
