@@ -1,80 +1,78 @@
-# Stock Price Prediction Using Linear Regression on Time Series Data
 
-This project demonstrates a simple approach to predict stock prices using historical closing prices and a linear regression model trained on sliding window time-series data.
+# 📈 Stock Price Prediction with Linear Regression
 
----
-
-## 📈 Objective
-
-Predict the next day’s closing price of a stock based on the past `window_size` days of closing prices.
+This project demonstrates a simple time-series forecasting approach to predict stock prices using historical closing prices and a linear regression model.
 
 ---
 
-## ⚙️ Features
+## ⚙️ How It Works
 
-- Download historical stock prices using `yfinance`
-- Create windowed input-output pairs for time series regression
-- Train/test split without shuffling (to preserve temporal order)
-- Linear regression model training and evaluation
-- Visualization of price history and predicted vs true prices
-- Save trained model and plots to disk
-
----
-
-## 📂 Project Structure
-
-```
-
-stock-price-prediction/
-├── main.py             # Main script for data download, training, evaluation, and plotting
-├── models/             # Saved trained model(s)
-├── plots/              # Visualizations (price history, prediction vs true)
-├── requirements.txt    # Python dependencies
-└── README.md           # This file
-
-````
+- Downloads historical stock price data (default ticker: `PLAY`)
+- Creates a sliding window dataset to predict the next day’s closing price based on previous days
+- Trains a linear regression model on the windowed data
+- Evaluates performance with MSE, RMSE, and MAE metrics
+- Saves model and plots for visualization
 
 ---
 
-## 🛠️ Requirements
+## 🚀 How to Run
 
-Install dependencies via pip:
-
-```bash
-pip install yfinance pandas numpy matplotlib seaborn scikit-learn joblib
-````
-
----
-
-## ▶️ How to Run
-
-Simply run:
+By default, the script downloads data for ticker `PLAY`:
 
 ```bash
 python main.py
+````
+
+You can specify a different ticker symbol with the `--ticker` argument:
+
+```bash
+python main.py --ticker AAPL
+```
+
+Replace `AAPL` with any valid stock ticker symbol you want to analyze.
+
+---
+
+## 📉 Evaluation Metrics (example for ticker PLAY):
+
+* MSE: 0.1856
+* RMSE: 0.4308
+* MAE: 0.3375
+
+---
+
+## 🗂️ Project Structure
+
+```
+stock-price-prediction/
+├── main.py                  # Main script to run the model
+├── models/                  # Saved trained models
+├── plots/                   # Generated plots (price history, predictions)
+├── requirements.txt         # Dependencies list
+└── README.md                # Project overview
 ```
 
 ---
 
-## 📊 Outputs
+## 🛠️ Dependencies
 
-* `plots/price_history.png` — Historical closing prices chart
-* `plots/prediction_vs_true.png` — Plot comparing predicted and true prices on test set
-* `models/play_stock_model.pkl` — Saved trained linear regression model
+* yfinance
+* pandas
+* numpy
+* scikit-learn
+* matplotlib
+* seaborn
+* joblib
 
----
+Install all dependencies with:
 
-## 📉 Evaluation Metrics
-
-* Mean Squared Error (MSE)
-* Root Mean Squared Error (RMSE)
-* Mean Absolute Error (MAE)
+```bash
+pip install -r requirements.txt
+```
 
 ---
 
 ## License
 
 MIT License
-
----
 
